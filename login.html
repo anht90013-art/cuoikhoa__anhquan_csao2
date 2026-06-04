@@ -14,7 +14,7 @@
             <h1>CRUNCHYROLL</h1>
             <p class="subtitle">Đăng nhập tài khoản</p>
 
-            <form id="loginForm">
+            <form id="loginForm" onsubmit="event.preventDefault(); dangNhap();">
                 <div class="form-group">
                     <label for="username">Tên đăng nhập</label>
                     <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required>
@@ -25,16 +25,17 @@
                     <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
                 </div>
 
-                <button type="submit" class="login-btn"onclick="dangNhap()">ĐĂNG NHẬP</button>
+                <button type="submit" class="login-btn">ĐĂNG NHẬP</button>
 
                 <div class="options">
                     <label class="remember">
                         <input type="checkbox" name="remember">
                         <span>Ghi nhớ tôi</span>
                     </label>
-               
                 </div>
             </form>
+
+            <p id="thongbao" class="thongbao"></p>
 
             <div class="signup-link">
                 <p>Chưa có tài khoản? <a href="signup.html">Đăng ký ngay</a></p>
