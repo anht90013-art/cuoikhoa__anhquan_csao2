@@ -15,7 +15,7 @@ function dangKy() {
 
     
     // Kiểm tra cơ bản
-    if (!username || !password || !confirmPassword) {
+    if (!username || !password ) {
         hienThiThongBao('Vui lòng điền đầy đủ thông tin!');
         return;
     } 
@@ -70,7 +70,7 @@ function dangNhap() {
     if (user) {
         hienThiThongBao('Đăng nhập thành công!');
         localStorage.setItem('currentUser', username);
-        setTimeout(() => window.location.href = 'index.html', 1500);
+        setTimeout(() => window.location.href = 'mainpage.html', 1500);
     } else {
         hienThiThongBao('Sai tên đăng nhập hoặc mật khẩu!');
     }
