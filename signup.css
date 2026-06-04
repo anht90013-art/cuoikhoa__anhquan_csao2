@@ -18,7 +18,7 @@ body {
     align-items: center;
 }
 
-.login-container {
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
