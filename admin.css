@@ -1,0 +1,438 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    background: #111827;
+    color: white;
+    padding: 25px 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 10px 15px 35px;
+}
+
+.logo:first-letter {
+    color: #6366f1;
+}
+
+nav a {
+    display: block;
+    padding: 14px 16px;
+    margin-bottom: 7px;
+    border-radius: 9px;
+    color: #9ca3af;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav a:hover,
+nav a.active {
+    background: #4f46e5;
+    color: white;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    margin-left: 250px;
+    padding: 30px;
+}
+
+
+/* TOPBAR */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.topbar h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.topbar p {
+    color: #6b7280;
+}
+
+.add-btn {
+    border: none;
+    background: #4f46e5;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #4338ca;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.blue {
+    background: #e0e7ff;
+}
+
+.yellow {
+    background: #fef3c7;
+}
+
+.green {
+    background: #dcfce7;
+}
+
+.stat-card span {
+    display: block;
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.stat-card strong {
+    font-size: 23px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    display: flex;
+    gap: 12px;
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input,
+.search-box select {
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 7px;
+    outline: none;
+}
+
+.search-box input {
+    flex: 1;
+}
+
+.search-box input:focus,
+.search-box select:focus {
+    border-color: #4f46e5;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.movie-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f9fafb;
+}
+
+th,
+td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+th {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+td {
+    font-size: 14px;
+}
+
+
+/* POSTER */
+
+.movie-poster {
+    width: 55px;
+    height: 75px;
+    border-radius: 6px;
+    object-fit: cover;
+    background: #eee;
+}
+
+.movie-name {
+    font-weight: bold;
+    max-width: 200px;
+}
+
+.description {
+    color: #6b7280;
+}
+
+
+/* BADGES */
+
+.genre {
+    display: inline-block;
+    padding: 5px 9px;
+    background: #eef2ff;
+    color: #4f46e5;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.rating {
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+
+/* ACTION BUTTONS */
+
+.edit-btn,
+.delete-btn {
+    border: none;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-btn {
+    background: #e0e7ff;
+    color: #4338ca;
+}
+
+.delete-btn {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.edit-btn:hover {
+    background: #c7d2fe;
+}
+
+.delete-btn:hover {
+    background: #fecaca;
+}
+
+
+/* EMPTY */
+
+.empty {
+    display: none;
+    padding: 50px;
+    text-align: center;
+    color: #9ca3af;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    width: 560px;
+    max-width: 100%;
+    max-height: 92vh;
+    overflow-y: auto;
+
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin-bottom: 5px;
+}
+
+.modal-header p {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+
+/* FORM */
+
+form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 14px 0 6px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #4f46e5;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+
+/* POSTER PREVIEW */
+
+.poster-preview {
+    margin-top: 12px;
+}
+
+.poster-preview img {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 7px;
+    display: none;
+}
+
+
+/* MODAL ACTION */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.cancel-btn,
+.save-btn {
+    border: none;
+    padding: 11px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #e5e7eb;
+}
+
+.save-btn {
+    background: #4f46e5;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #4338ca;
+}
+
+

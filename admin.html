@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Movie Admin</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo">🎬 <span>MOVIE ADMIN</span></div>
+
+      <nav>
+        <a class="active">🎬 Quản lý phim</a>
+        <a>📊 Thống kê</a>
+        <a>👥 Người dùng</a>
+        <a>⚙️ Cài đặt</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Quản lý phim</h1>
+          <p>Thêm, sửa và xóa phim trên hệ thống</p>
+        </div>
+
+        <button class="add-btn" onclick="goToAddFilmPage()">+ Thêm phim</button>
+      </header>
+
+      <!-- STATISTICS -->
+      <section class="stats">
+        <div class="stat-card">
+          <div class="stat-icon blue">🎬</div>
+
+          <div>
+            <span>Tổng số phim</span>
+            <strong id="totalMovies">0</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon yellow">⭐</div>
+
+          <div>
+            <span>Đánh giá TB</span>
+            <strong id="averageRating">0</strong>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">📅</div>
+
+          <div>
+            <span>Phim mới nhất</span>
+            <strong id="latestYear">-</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEARCH -->
+      <section class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="🔍 Tìm kiếm tên phim..."
+          oninput="renderMovies()"
+        />
+
+        <select id="genreFilter" onchange="renderMovies()">
+          <option value="">Tất cả thể loại</option>
+          <option value="Hành động">Hành động</option>
+          <option value="Tình cảm">Tình cảm</option>
+          <option value="Hài">Hài</option>
+          <option value="Kinh dị">Kinh dị</option>
+          <option value="Hoạt hình">Hoạt hình</option>
+          <option value="Khoa học viễn tưởng">Khoa học viễn tưởng</option>
+        </select>
+      </section>
+
+      <!-- MOVIE TABLE -->
+      <section class="movie-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Poster</th>
+              <th>Tên phim</th>
+              <th>Thể loại</th>
+              <th>Năm</th>
+              <th>Thời lượng</th>
+              <th>Rating</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+
+          <tbody id="movieList"></tbody>
+        </table>
+
+        <div id="emptyMessage" class="empty">🎬 Không tìm thấy phim nào</div>
+      </section>
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal" id="movieModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2 id="modalTitle">Thêm phim</h2>
+            <p>Nhập thông tin phim</p>
+          </div>
+
+          <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+
+        <form id="movieForm">
+          <input type="hidden" id="movieId" />
+
+          <label>Tên phim</label>
+
+          <input
+            type="text"
+            id="movieTitle"
+            placeholder="Ví dụ: Avengers: Endgame"
+            required
+          />
+
+          <div class="form-row">
+            <div>
+              <label>Thể loại</label>
+
+              <select id="movieGenre" required>
+                <option value="">Chọn thể loại</option>
+
+                <option>Hành động</option>
+                <option>Tình cảm</option>
+                <option>Hài</option>
+                <option>Kinh dị</option>
+                <option>Hoạt hình</option>
+                <option>Khoa học viễn tưởng</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Năm phát hành</label>
+
+              <input
+                type="number"
+                id="movieYear"
+                min="1900"
+                max="2100"
+                placeholder="2026"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label>Thời lượng</label>
+
+              <input
+                type="text"
+                id="movieDuration"
+                placeholder="2h 15m"
+                required
+              />
+            </div>
+
+            <div>
+              <label>Rating</label>
+
+              <input
+                type="number"
+                id="movieRating"
+                min="0"
+                max="10"
+                step="0.1"
+                placeholder="8.5"
+                required
+              />
+            </div>
+          </div>
+
+          <label>Link Poster</label>
+
+          <input type="url" id="moviePoster" placeholder="https://..." />
+
+          <div class="poster-preview">
+            <img id="posterPreview" src="" alt="Poster" />
+          </div>
+
+          <label>Mô tả</label>
+
+          <textarea
+            id="movieDescription"
+            rows="4"
+            placeholder="Nhập mô tả phim..."
+          ></textarea>
+
+          <div class="modal-actions">
+            <button type="button" class="cancel-btn" onclick="closeModal()">
+              Hủy
+            </button>
+
+            <button type="submit" class="save-btn">💾 Lưu phim</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="admin.js"></script>
+
+    <link rel="stylesheet" href="admin.css" />
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lưu tên</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 600;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 10px 0;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #357ae8;
+    }
+    .logout-btn {
+      background-color: #dc3545;
+      margin-top: 20px;
+    }
+    .logout-btn:hover {
+      background-color: #c82333;
+    }
+    #nameList {
+      list-style: none;
+      padding: 0;
+    }
+    #nameList li {
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Lưu thông phim vào Firestore</h2>
+  <p>Xin chào: <span id="tên phim"></span></p>
+
+  <label for="nameInput">ngày ra mắt</label>
+  <input id="nameInput" placeholder="Nhập ngày ra mắt">
+
+  <label for="schoolInput">thể loại</label>
+  <input id="schoolInput" placeholder="Nhập thể loại">
+
+  <label for="dobInput">quốc gia</label>
+  <input id="dobInput" placeholder="Nhập quốc gia">
+
+  <button onclick="saveName()">Lưu thông tin</button>
+
+  <h3>Danh sách phim lưu trong hệ thống:</h3>
+
+  <ul id="nameList"></ul>
+
+  <button class="logout-btn" onclick="logout()">Đăng xuất</button>
+
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
