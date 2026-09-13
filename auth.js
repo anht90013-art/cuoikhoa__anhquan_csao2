@@ -70,7 +70,7 @@ function dangNhap() {
     if (user) {
         hienThiThongBao('Đăng nhập thành công!');
         localStorage.setItem('currentUser', username);
-        setTimeout(() => window.location.href = 'mainpage.html', 1500);
+        window.location.href = 'mainpage.html';
     } else {
         hienThiThongBao('Sai tên đăng nhập hoặc mật khẩu!');
     }

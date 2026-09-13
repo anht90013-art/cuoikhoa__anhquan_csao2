@@ -58,7 +58,10 @@
   <h2>Lưu thông phim vào Firestore</h2>
   <p>Xin chào: <span id="userEmail"></span></p>
   <label for="posterInput">Poster</label>
-   <input id="posterInput" placeholder="Nhập image">
+  <input id="posterInput" type="url" placeholder="https://example.com/poster.jpg">
+  <div class="poster-preview" style="margin: 10px 0; display: none;">
+    <img id="posterPreview" src="" alt="Poster phim" style="max-width: 180px; max-height: 240px; border-radius: 8px; display: block;">
+  </div>
   <label for="nameInput">tên phim</label>
   <input id="nameInput" placeholder="Nhập tên phim">
 

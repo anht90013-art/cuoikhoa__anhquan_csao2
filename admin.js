@@ -126,3 +126,4 @@ const deleteMovie = async (id) => {
 };
 
 loadMovies();
+

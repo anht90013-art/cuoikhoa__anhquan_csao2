@@ -10,6 +10,7 @@ const db = getFirestore(app);
 // Lấy DOM elements theo chuẩn ES6
 const getElement = (id) => document.getElementById(id);
 const posterInput = getElement("posterInput");
+const posterPreview = getElement("posterPreview");
 const nameInput = getElement("nameInput");
 const genreInput = getElement("genreInput");
 const countryInput = getElement("countryInput");
@@ -17,6 +18,29 @@ const durationInput = getElement("durationInput");
 const ratingInput = getElement("ratingInput");
 const nameList = getElement("nameList");
 const userEmailEl = getElement("userEmail");
+
+const renderPosterPreview = () => {
+  if (!posterInput || !posterPreview) return;
+
+  const posterUrl = posterInput.value.trim();
+  const previewContainer = posterPreview.parentElement;
+
+  if (!posterUrl) {
+    posterPreview.src = "";
+    posterPreview.alt = "Poster phim";
+    if (previewContainer) previewContainer.style.display = "none";
+    return;
+  }
+
+  posterPreview.src = posterUrl;
+  posterPreview.alt = "Poster phim";
+  if (previewContainer) previewContainer.style.display = "block";
+};
+
+if (posterInput) {
+  posterInput.addEventListener("input", renderPosterPreview);
+  renderPosterPreview();
+}
 
 // Hiển thị người dùng đang đăng nhập
 if (userEmailEl) {
@@ -48,12 +72,12 @@ const loadNames = async () => {
 
 // Lưu tên và thông tin
 window.saveName = async () => {
-  const posterfile = posterInput.files[0];
   const name = nameInput.value.trim();
   const genre = genreInput ? genreInput.value.trim() : "";
   const country = countryInput ? countryInput.value.trim() : "";
   const duration = durationInput ? durationInput.value.trim() : "";
   const rating = ratingInput ? ratingInput.value.trim() : "";
+  const poster = posterInput ? posterInput.value.trim() : "";
 
   if (!name) {
     alert("Bạn chưa nhập tên vào!");
@@ -61,13 +85,14 @@ window.saveName = async () => {
   }
 
   try {
-    await addDoc(collection(db, "names"), { name, genre, country, duration, rating });
+    await addDoc(collection(db, "names"), { name, genre, country, duration, rating, poster });
     nameInput.value = "";
-    posterInput.value = '';
+    if (posterInput) posterInput.value = "";
     if (genreInput) genreInput.value = "";
     if (countryInput) countryInput.value = "";
     if (durationInput) durationInput.value = "";
     if (ratingInput) ratingInput.value = "";
+    renderPosterPreview();
     await loadNames();
     alert("Lưu phim thành công!");
   } catch ({ message }) {
