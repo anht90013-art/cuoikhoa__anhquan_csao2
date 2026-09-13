@@ -255,4 +255,74 @@ header h1{
     color:#2ed573;
     font-weight:bold;
 }
+
+.firestore-section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 55px auto 80px;
+}
+
+.firestore-section h1 {
+  margin-bottom: 24px;
+  color: #ff4757;
+}
+
+.firestore-movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 24px;
+}
+
+.firestore-movie-card {
+  overflow: hidden;
+  background: #1f1f1f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.firestore-movie-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 60, 120, 0.7);
+}
+
+.firestore-movie-card img,
+.movie-poster-placeholder {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-poster-placeholder {
+  display: grid;
+  place-items: center;
+  color: #aaa;
+  background: #29293a;
+}
+
+.firestore-movie-content {
+  padding: 16px;
+}
+
+.firestore-movie-content h3 {
+  margin-bottom: 9px;
+  color: #ffa502;
+}
+
+.firestore-movie-content p {
+  min-height: 42px;
+  color: #ccc;
+  line-height: 1.45;
+}
+
+.firestore-movie-content strong {
+  display: block;
+  margin-top: 13px;
+  color: #ffd166;
+}
+
+.firestore-empty {
+  color: #aaa;
+}
     
