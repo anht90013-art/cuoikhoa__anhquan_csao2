@@ -35,12 +35,12 @@
     button:hover {
       background-color: #357ae8;
     }
-    .logout-btn {
-      background-color: #dc3545;
+    .back-btn {
+      background-color: #6c757d;
       margin-top: 20px;
     }
-    .logout-btn:hover {
-      background-color: #c82333;
+    .back-btn:hover {
+      background-color: #5a6268;
     }
     #nameList {
       list-style: none;
@@ -56,7 +56,7 @@
 </head>
 <body>
   <h2>Lưu thông phim vào Firestore</h2>
-  <p>Xin chào: <span id="tên phim"></span></p>
+  <p>Xin chào: <span id="userEmail"></span></p>
 
   <label for="nameInput">tên phim</label>
   <input id="nameInput" placeholder="Nhập tên phim">
@@ -76,7 +76,7 @@
   <script type="module" src="addfilm.js"></script>
   
 
-  <button class="logout-btn" onclick="logout()">Đăng xuất</button>
+  <button class="back-btn" onclick="goBack()">Quay lại</button>
   
 </body>
 </html>
