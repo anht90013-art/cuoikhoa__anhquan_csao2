@@ -13,6 +13,7 @@ const db = getFirestore(app);
 
 let movies = [];
 
+// Mã hóa dữ liệu trước khi chèn vào HTML để tránh lỗi và mã độc XSS.
 const escapeHtml = (value) =>
   String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -20,10 +21,12 @@ const escapeHtml = (value) =>
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
 
+// Chuyển người dùng đến trang thêm phim mới.
 window.goToAddFilmPage = () => {
   window.location.href = "addfilm.html";
 };
 
+// Cập nhật các số liệu thống kê trên trang quản trị.
 const updateStats = () => {
   const totalEl = document.getElementById("totalMovies");
   const avgEl = document.getElementById("averageRating");
@@ -48,6 +51,7 @@ const updateStats = () => {
   }
 };
 
+// Lọc và hiển thị danh sách phim lên bảng quản trị.
 window.renderMovies = () => {
   const list = document.getElementById("movieList");
   const empty = document.getElementById("emptyMessage");
@@ -100,6 +104,7 @@ window.renderMovies = () => {
   });
 };
 
+// Tải toàn bộ dữ liệu phim từ collection "names" trên Firestore.
 const loadMovies = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "names"));
@@ -114,6 +119,7 @@ const loadMovies = async () => {
   }
 };
 
+// Xóa một phim khỏi Firestore sau khi người dùng xác nhận.
 const deleteMovie = async (id) => {
   if (!confirm("Bạn có chắc muốn xóa phim này?")) return;
 

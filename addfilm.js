@@ -7,7 +7,7 @@ import { firebaseConfig } from "./config.js";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Lấy DOM elements theo chuẩn ES6
+// Lấy một phần tử HTML thông qua id của phần tử đó.
 const getElement = (id) => document.getElementById(id);
 const posterInput = getElement("posterInput");
 const posterPreview = getElement("posterPreview");
@@ -19,6 +19,7 @@ const ratingInput = getElement("ratingInput");
 const nameList = getElement("nameList");
 const userEmailEl = getElement("userEmail");
 
+// Hiển thị hoặc ẩn ảnh poster dựa trên đường dẫn người dùng nhập.
 const renderPosterPreview = () => {
   if (!posterInput || !posterPreview) return;
 
@@ -37,6 +38,7 @@ const renderPosterPreview = () => {
   if (previewContainer) previewContainer.style.display = "block";
 };
 
+// Cập nhật ảnh xem trước mỗi khi đường dẫn poster thay đổi.
 if (posterInput) {
   posterInput.addEventListener("input", renderPosterPreview);
   renderPosterPreview();
@@ -47,7 +49,7 @@ if (userEmailEl) {
   userEmailEl.textContent = localStorage.getItem("currentUser") || "Khách";
 }
 
-// Load danh sách phim
+// Tải danh sách phim từ Firestore và hiển thị lên danh sách trên trang.
 const loadNames = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "names"));
@@ -70,7 +72,7 @@ const loadNames = async () => {
   }
 };
 
-// Lưu tên và thông tin
+// Kiểm tra dữ liệu, lưu thông tin phim vào Firestore và làm mới biểu mẫu.
 window.saveName = async () => {
   const name = nameInput.value.trim();
   const genre = genreInput ? genreInput.value.trim() : "";
@@ -100,10 +102,10 @@ window.saveName = async () => {
   }
 };
 
-// Quay lại trang admin
+// Quay lại trang quản trị phim.
 window.goBack = () => {
   window.location.href = "admin.html";
 };
 
-// Tải danh sách khi vào trang
+// Tự động tải danh sách phim khi trang được mở.
 loadNames();
