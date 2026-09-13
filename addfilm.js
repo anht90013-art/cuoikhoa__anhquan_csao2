@@ -9,12 +9,12 @@ const db = getFirestore(app);
 
 // Lấy DOM elements theo chuẩn ES6
 const getElement = (id) => document.getElementById(id);
+const posterInput = getElement("posterInput");
 const nameInput = getElement("nameInput");
 const genreInput = getElement("genreInput");
 const countryInput = getElement("countryInput");
 const durationInput = getElement("durationInput");
 const ratingInput = getElement("ratingInput");
-const posterInput = getElement("posterInput");
 const nameList = getElement("nameList");
 const userEmailEl = getElement("userEmail");
 
@@ -33,6 +33,7 @@ const loadNames = async () => {
       const data = doc.data();
       const li = document.createElement("li");
       const parts = [data.name || "Không có tên"];
+      
       if (data.genre) parts.push(data.genre);
       if (data.country) parts.push(data.country);
       if (data.duration) parts.push(data.duration);
@@ -47,7 +48,7 @@ const loadNames = async () => {
 
 // Lưu tên và thông tin
 window.saveName = async () => {
-  const posterfile = posterInput.files[0]
+  const posterfile = posterInput.files[0];
   const name = nameInput.value.trim();
   const genre = genreInput ? genreInput.value.trim() : "";
   const country = countryInput ? countryInput.value.trim() : "";
