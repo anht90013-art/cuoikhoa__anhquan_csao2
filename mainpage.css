@@ -268,12 +268,25 @@ header h1{
 }
 
 .firestore-movie-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 24px;
+  overflow-x: auto;
+  padding: 4px 4px 14px;
+  scroll-behavior: smooth;
+}
+
+.firestore-movie-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.firestore-movie-grid::-webkit-scrollbar-thumb {
+  background: #ff4757;
+  border-radius: 4px;
 }
 
 .firestore-movie-card {
+  flex: 0 0 240px;
   overflow: hidden;
   background: #1f1f1f;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -288,14 +301,14 @@ header h1{
 
 .firestore-movie-card img,
 .movie-poster-placeholder {
-  display: block;
+  display: flex;
   width: 100%;
   height: 300px;
   object-fit: cover;
 }
 
 .movie-poster-placeholder {
-  display: grid;
+  display: flex;
   place-items: center;
   color: #aaa;
   background: #29293a;

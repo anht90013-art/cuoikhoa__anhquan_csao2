@@ -1,5 +1,5 @@
-// JavaScript đơn giản nhất cho đăng ký và đăng nhập
-// Code ngắn gọn, dễ hiểu
+const ADMIN_USERNAME = 'admin';
+const ADMIN_PASSWORD = 'admin123';
 
 // Hàm hiển thị thông báo
 function hienThiThongBao(noiDung) {
@@ -55,6 +55,14 @@ function dangNhap() {
         return;
     }
     
+    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        hienThiThongBao('Đăng nhập admin thành công!');
+        localStorage.setItem('currentUser', username);
+        localStorage.setItem('currentRole', 'admin');
+        window.location.href = 'admin.html';
+        return;
+    }
+
     // Lấy danh sách người dùng
     let users = JSON.parse(localStorage.getItem('users') || '[]');
     
@@ -70,6 +78,7 @@ function dangNhap() {
     if (user) {
         hienThiThongBao('Đăng nhập thành công!');
         localStorage.setItem('currentUser', username);
+        localStorage.setItem('currentRole', 'user');
         window.location.href = 'mainpage.html';
     } else {
         hienThiThongBao('Sai tên đăng nhập hoặc mật khẩu!');
