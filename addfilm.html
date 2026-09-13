@@ -57,7 +57,8 @@
 <body>
   <h2>Lưu thông phim vào Firestore</h2>
   <p>Xin chào: <span id="userEmail"></span></p>
-
+  <label for="posterInput">Poster</label>
+  <input type="file" id="posterInput" />
   <label for="nameInput">tên phim</label>
   <input id="nameInput" placeholder="Nhập tên phim">
 
@@ -66,6 +67,13 @@
 
   <label for="countryInput">quốc gia</label>
   <input id="countryInput" placeholder="Nhập quốc gia">
+
+  <label for="durationInput">thời lượng</label>
+  <input id="durationInput" placeholder="Nhập thời lượng">
+
+  <label for="ratingInput">rating</label>
+  <input id="ratingInput" placeholder="Nhập rating">
+
 
   <button onclick="saveName()">Lưu thông tin</button>
 

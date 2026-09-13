@@ -12,6 +12,9 @@ const getElement = (id) => document.getElementById(id);
 const nameInput = getElement("nameInput");
 const genreInput = getElement("genreInput");
 const countryInput = getElement("countryInput");
+const durationInput = getElement("durationInput");
+const ratingInput = getElement("ratingInput");
+const posterInput = getElement("posterInput");
 const nameList = getElement("nameList");
 const userEmailEl = getElement("userEmail");
 
@@ -32,6 +35,8 @@ const loadNames = async () => {
       const parts = [data.name || "Không có tên"];
       if (data.genre) parts.push(data.genre);
       if (data.country) parts.push(data.country);
+      if (data.duration) parts.push(data.duration);
+      if (data.rating) parts.push(`⭐ ${data.rating}`);
       li.textContent = parts.join(" | ");
       nameList.appendChild(li);
     });
@@ -42,9 +47,12 @@ const loadNames = async () => {
 
 // Lưu tên và thông tin
 window.saveName = async () => {
+  const posterfile = posterInput.files[0]
   const name = nameInput.value.trim();
   const genre = genreInput ? genreInput.value.trim() : "";
   const country = countryInput ? countryInput.value.trim() : "";
+  const duration = durationInput ? durationInput.value.trim() : "";
+  const rating = ratingInput ? ratingInput.value.trim() : "";
 
   if (!name) {
     alert("Bạn chưa nhập tên vào!");
@@ -52,10 +60,13 @@ window.saveName = async () => {
   }
 
   try {
-    await addDoc(collection(db, "names"), { name, genre, country });
+    await addDoc(collection(db, "names"), { name, genre, country, duration, rating });
     nameInput.value = "";
+    posterInput.value = '';
     if (genreInput) genreInput.value = "";
     if (countryInput) countryInput.value = "";
+    if (durationInput) durationInput.value = "";
+    if (ratingInput) ratingInput.value = "";
     await loadNames();
     alert("Lưu phim thành công!");
   } catch ({ message }) {
